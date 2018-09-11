@@ -79,3 +79,4 @@ The PokerHand interface defines the following methods that should be implemented
 * int compareTo(PokerHand other)
   * Compares a hand with the hand passed in as _other_. Returns -1 if the hand value is smaller and 1 if the hand value is larger than the hand passed in as _other_. If the hand values are equal, then returns -1 if the hand rank is smaller or 1 if the hand rank is larger. If both hand value and hand rank are the same, returns 0.
 
+
