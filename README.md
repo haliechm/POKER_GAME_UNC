@@ -14,7 +14,7 @@ The Card interface includes the following methods:
 * int getRank()
   * Returns the "rank" of a playing card. Each card should have a rank between 2 and 14. The rank value of the face cards (i.e., Jack, Queen, King, and Ace) should be 11, 12, 13, and 14.
 * Card.Suit getSuit()
-  * Returns the "suit" of a playing card. Each card should have a suit that is one of the enumerated symbols defined in the Card.Suit enumeration.
+  * Returns the "suit" of a playing card (i.e., spades, hearts, diamonds, or clubs). Each card should have a suit that is one of the enumerated symbols defined in the Card.Suit enumeration.
 * String toString()
   * Returns a string representation of the card. This should be in the form of "Rank of Suit" where "Rank" is the word representation of each rank. The non-face card ranks should be in the form of their English word equivalent with an initial capital letter (i.e., "Two", "Three", etc.). The face card ranks should be in the form of their names with an initial capital letter (i.e., "Jack", "Queen", "King", "Ace"). The string representation of the suit should be one of "Spades", "Hearts", "Diamonds", or "Clubs". For example, a card with rank value 12 and suit value Card.HEARTS should produce the string: "Queen of Hearts".
 * boolean equals(Card other)
