@@ -6,5 +6,5 @@ This assignment will require you to create a couple of basic classes that implem
 are provided in the skeleton code in this repository and represent a standard playing card and a poker hand.
 
 The Card interface includes the following methods:
- * list item
+* list item
  
