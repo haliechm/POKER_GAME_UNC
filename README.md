@@ -14,7 +14,7 @@ The Card interface includes the following methods:
 * int getRank()
   * Returns the "rank" of a playing card. Each card should have a rank between 2 and 14. The rank value of the face cards (i.e., Jack, Queen, King, and Ace) should be 11, 12, 13, and 14.
 * Card.Suit getSuit()
-  * Returns the "suit" of a playing card (i.e., spades, hearts, diamonds, or clubs). Each card should have a suit that is one of the enumerated symbols defined in the Card.Suit enumeration.
+  * Returns the "suit" of a playing card (i.e., spades, hearts, diamonds, or clubs). Each card should have a suit that is one of the enumerated symbols defined in the Card.Suit enumeration. 
 * String toString()
   * Returns a string representation of the card. This should be in the form of "Rank of Suit" where "Rank" is the word representation of each rank. The non-face card ranks should be in the form of their English word equivalent with an initial capital letter (i.e., "Two", "Three", etc.). The face card ranks should be in the form of their names with an initial capital letter (i.e., "Jack", "Queen", "King", "Ace"). The string representation of the suit should be one of "Spades", "Hearts", "Diamonds", or "Clubs". For example, a card with rank value 12 and suit value Card.HEARTS should produce the string: "Queen of Hearts".
 * boolean equals(Card other)
@@ -34,7 +34,7 @@ A poker hand is a collection of 5 cards which have a _hand value_ and a _hand ra
 * High card
   * A hand that is not recognized as any of the other hand types. This hand should have a hand value of 1 and a hand rank that corresponds to the highest ranked card in the hand.
 * One Pair
-  * A hand that contains exactly two cards of different suits with the same rank and three cards other cards that do not match each other or the paired cards in rank. Hand value should be 2 and hand rank should be the rank of the paired cards.
+  * A hand that contains exactly two cards with the same rank and three cards other non-matching cards. Hand value should be 2 and hand rank should be the rank of the paired cards.
 * Two Pair
   * A hand that contains exactly two different pairs (i.e., two cards that match in rank, another two cards that match a different rank, and a fifth card that does not match in rank with either of the two pairs). The hand value of two pair is 3 and the hand rank is the rank of the higher of the two pairs.
 * Three of a Kind
@@ -48,7 +48,7 @@ A poker hand is a collection of 5 cards which have a _hand value_ and a _hand ra
 * Four of a Kind
   * A hand that contains fours cards that all match in rank with an arbitrary fifth card. The hand value should be 8 and the hand rank is the rank of the four matching cards.
 * Straight Flush
-  * A hand that is both a straight and a flush. The hand value should be 9 and the hand rank is the rank of the highest card in the hand.
+  * A hand that is both a straight and a flush. The hand value should be 9 and the hand rank is the rank of the highest card in the hand (again with the caveat about the wheel).
 
 The PokerHand interface defines the following methods that should be implemented by your PokrHandImpl class:
 
@@ -78,5 +78,12 @@ The PokerHand interface defines the following methods that should be implemented
   * Returns the hand rank of the hand as described above.
 * int compareTo(PokerHand other)
   * Compares a hand with the hand passed in as _other_. Returns -1 if the hand value is smaller and 1 if the hand value is larger than the hand passed in as _other_. If the hand values are equal, then returns -1 if the hand rank is smaller or 1 if the hand rank is larger. If both hand value and hand rank are the same, returns 0.
+  
+ PokerHandImpl should provide a constructor declared as:
+ ```
+ public PokerHandImpl(Card[] cards)
+ ```
+ 
+ ## Jedi: 
 
 
