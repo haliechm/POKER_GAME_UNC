@@ -83,7 +83,8 @@ The PokerHand interface defines the following methods that should be implemented
  ```
  public PokerHandImpl(Card[] cards)
  ```
- Hints for adept:
+
+### Hints for adept:
  * Be sure to clone the array of cards passed into the constructor before storing them in the new object.
  * Store the cards in the new object in rank sorted order. It will make it much easier for you to classify the hand.
  * I found it helpful to write and use a private helper function called find_pair_starting_at(int index) which looks for the first pair of cards starting at the given index and returns the index of the first card in that pair or -1 if no pair was found.
@@ -124,3 +125,10 @@ You should get something close to the following output:
 0
 ```
 Because the experiment has a small degree of randomness, your output may differ from the above, but it really shouldn't differ by more than 1 if at all.
+
+# Grading
+
+Submit to the autograder by pushing a "submit" branch to github. 
+* 2 points for Novice
+* 6 points for Adept
+* 2 points for Jedi
