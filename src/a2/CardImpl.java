@@ -72,19 +72,19 @@ public class CardImpl implements Card {
 	
 	// TRYING TO TEST
 	
-	 public static void main(String[] args) {
-		 CardImpl card = new CardImpl(JACK, Card.Suit.SPADES);
-		 CardImpl card2 = new CardImpl(5, Card.Suit.SPADES);
-		 System.out.println("Rank is: " + card.getRank());
-		 System.out.println("Suit is: " + card.getSuit());
-		 System.out.println("Card is: " + card.toString());
-		 if (card.equals(card2)) {
-			 System.out.println("The cards are equal");
-		 } else {
-			 System.out.println("The cards are not equal");
-		 }
-		 
-	 }
+//	 public static void main(String[] args) {
+//		 CardImpl card = new CardImpl(JACK, Card.Suit.SPADES);
+//		 CardImpl card2 = new CardImpl(5, Card.Suit.SPADES);
+//		 System.out.println("Rank is: " + card.getRank());
+//		 System.out.println("Suit is: " + card.getSuit());
+//		 System.out.println("Card is: " + card.toString());
+//		 if (card.equals(card2)) {
+//			 System.out.println("The cards are equal");
+//		 } else {
+//			 System.out.println("The cards are not equal");
+//		 }
+//		 
+//	 }
 	 
 		 
 	 
