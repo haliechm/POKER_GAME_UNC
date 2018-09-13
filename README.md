@@ -90,7 +90,7 @@ The PokerHand interface defines the following methods that should be implemented
  * I found it helpful to write and use a private helper function called find_pair_starting_at(int index) which looks for the first pair of cards starting at the given index and returns the index of the first card in that pair or -1 if no pair was found.
  * When trying to determine hand rank, for each type of hand, think about whether or not you can identify a particular card position in the sorted array that must contain a card with the appropriate rank of the hand as a whole. For example, in a three of a kind, assuming the cards are stored in rank sorted order, the card in position (i.e., index) 2 must be one of the cards that is part of the three of kind.
  
- ## Jedi: 
+ ## Jedi: HandEvaluator
 
 Read and understand the Deck interface and its implementation DeckImpl. Using these, write a program called HandEvaluator that determines the winning percentage of a particular hand when pitted against a certain number of players. 
 
