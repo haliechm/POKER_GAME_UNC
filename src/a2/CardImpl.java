@@ -2,6 +2,8 @@ package a2;
 
 public class CardImpl implements Card {
 	
+	
+	
 	int rank;
 	Card.Suit suite;
 
@@ -12,7 +14,6 @@ public class CardImpl implements Card {
 	}
 	
 	// returns rank value of card (2 - 14)
-	// jack through king?
 	public int getRank() {
 		return rank;
 	}
@@ -23,10 +24,9 @@ public class CardImpl implements Card {
 	}
 	
 	// returns Rank of Suit (rank is written at "Two" or "Five" + "of" + Suit in string form)
-	// need capital letters
-	// rank is still in number form
+	// suit is still in enumeration form 
 	public String toString() {
-		return (numToString(getRank()) + " of " + getSuit());
+		return (numToString(getRank()) + " of " + Card.suitToString(getSuit()));
 	}
 	
 	// returns true if other card has same rank and suit values
@@ -65,7 +65,27 @@ public class CardImpl implements Card {
 			// not going to happen
 			return "NO CARD";
 		}
+		
 	}
-
+	
+	
+	
+	// TRYING TO TEST
+	
+	 public static void main(String[] args) {
+		 CardImpl card = new CardImpl(JACK, Card.Suit.SPADES);
+		 CardImpl card2 = new CardImpl(5, Card.Suit.SPADES);
+		 System.out.println("Rank is: " + card.getRank());
+		 System.out.println("Suit is: " + card.getSuit());
+		 System.out.println("Card is: " + card.toString());
+		 if (card.equals(card2)) {
+			 System.out.println("The cards are equal");
+		 } else {
+			 System.out.println("The cards are not equal");
+		 }
+		 
+	 }
+	 
+		 
 	 
 }
