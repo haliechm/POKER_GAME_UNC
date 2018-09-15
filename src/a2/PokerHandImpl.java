@@ -1,7 +1,6 @@
 package a2;
 
-// NEED TWOPAIR,HANDVALUE, HANDRANK, COMPARETO
-// ONEPAIR IS MESSED UP
+// HANDVALUE, HANDRANK, COMPARETO
 public class PokerHandImpl implements PokerHand {
 	
 	Card[] hand;
@@ -40,7 +39,7 @@ public PokerHandImpl(Card[] cards) {
 		return false;
 	}
 	
-	// RETURNS TRUE IS HAND IS ONE PAIR
+	// RETURNS TRUE IS HAND IS ONE PAIR (and other three are all different)
 	public boolean isOnePair() {
 		boolean isOnePair = false;
 		// 1
@@ -48,6 +47,9 @@ public PokerHandImpl(Card[] cards) {
 				&& hand[0].getRank() != hand[2].getRank()
 				&& hand[0].getRank() != hand[3].getRank()
 				&& hand[0].getRank() != hand[4].getRank()
+				&& hand[2].getRank() != hand[3].getRank()
+				&& hand[2].getRank() != hand[4].getRank()
+				&& hand[3].getRank() != hand[4].getRank()
 				) {
 			isOnePair = true;
 			return isOnePair;
@@ -57,6 +59,9 @@ public PokerHandImpl(Card[] cards) {
 				&& hand[1].getRank() != hand[0].getRank()
 				&& hand[1].getRank() != hand[3].getRank()
 				&& hand[1].getRank() != hand[4].getRank()
+				&& hand[0].getRank() != hand[3].getRank()
+				&& hand[0].getRank() != hand[4].getRank()
+				&& hand[3].getRank() != hand[4].getRank()
 				) {
 			isOnePair = true;
 			return isOnePair;
@@ -66,6 +71,9 @@ public PokerHandImpl(Card[] cards) {
 				&& hand[2].getRank() != hand[0].getRank()
 				&& hand[2].getRank() != hand[1].getRank()
 				&& hand[2].getRank() != hand[4].getRank()
+				&& hand[0].getRank() != hand[1].getRank()
+				&& hand[0].getRank() != hand[4].getRank()
+				&& hand[1].getRank() != hand[4].getRank()
 				) {
 			isOnePair = true;
 			return isOnePair;
@@ -75,6 +83,9 @@ public PokerHandImpl(Card[] cards) {
 				&& hand[3].getRank() != hand[0].getRank()
 				&& hand[3].getRank() != hand[1].getRank()
 				&& hand[3].getRank() != hand[2].getRank()
+				&& hand[0].getRank() != hand[1].getRank()
+				&& hand[0].getRank() != hand[2].getRank()
+				&& hand[1].getRank() != hand[2].getRank()
 				) {
 			isOnePair = true;
 			return isOnePair;
@@ -82,12 +93,46 @@ public PokerHandImpl(Card[] cards) {
 		return isOnePair;
 		}
 	
-	// returns true is the hand is a two pair hand
+	// RETURNS TRUE IF THE HAND IS A TWO PAIR HAND
 	public boolean isTwoPair() {
-		return true;
+		boolean isTwoPair = false; 
+		// 1
+		if (hand[0].getRank() == hand[1].getRank()
+			&& hand[2].getRank() == hand[3].getRank()
+			&& hand[0].getRank() != hand[2].getRank()
+			&& hand[0].getRank() != hand[3].getRank()
+			&& hand[0].getRank() != hand[4].getRank()
+			&& hand[2].getRank() != hand[4].getRank()
+			) {
+				isTwoPair = true;
+				return isTwoPair;
+			}
+		// 2
+		if (hand[1].getRank() == hand[2].getRank()
+				&& hand[3].getRank() == hand[4].getRank()
+				&& hand[1].getRank() != hand[3].getRank()
+				&& hand[1].getRank() != hand[4].getRank()
+				&& hand[1].getRank() != hand[0].getRank()
+				&& hand[3].getRank() != hand[0].getRank()
+				) {
+					isTwoPair = true;
+					return isTwoPair;
+		}
+		// 3
+		if (hand[0].getRank() == hand[1].getRank()
+				&& hand[3].getRank() == hand[4].getRank()
+				&& hand[0].getRank() != hand[3].getRank()
+				&& hand[0].getRank() != hand[4].getRank()
+				&& hand[0].getRank() != hand[2].getRank()
+				&& hand[3].getRank() != hand[2].getRank()
+				) {
+					isTwoPair = true;
+					return isTwoPair;
+				}
+		return isTwoPair;
 		}
 	
-	// RETURNS TRUE IS THREE OF A KIND
+	// RETURNS TRUE IS THREE OF A KIND (three of same rank, and other two are different)
 		boolean isThreeOfAKind = false;
 		
 		public boolean isThreeOfAKind() {
@@ -161,7 +206,7 @@ public PokerHandImpl(Card[] cards) {
 			return isFlush;
 		}
 	
-	// returns true if the hand is a full house
+	// RETURNS TRUE IF THE HAND IS A FULL HOUSE (3 same rank, 2 diff same rank)
 		public boolean isFullHouse() {
 			boolean isFullHouse = false;
 			// 1 
@@ -188,7 +233,7 @@ public PokerHandImpl(Card[] cards) {
 			
 		}
 	
-	// RETURNS TRUE IF THE HAND IS FOUR OF A KIND
+	// RETURNS TRUE IF THE HAND IS FOUR OF A KIND (four of same rank)
 		boolean isFourOfAKind = false;
 		public boolean isFourOfAKind() {
 			if (hand[0].getRank() == hand[1].getRank() 
