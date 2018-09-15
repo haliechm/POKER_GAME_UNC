@@ -1,6 +1,4 @@
 package a2;
-
-// COMPARETO
 public class PokerHandImpl implements PokerHand {
 	
 	Card[] hand;
@@ -397,12 +395,21 @@ public PokerHandImpl(Card[] cards) {
 	// if hand values and hand ranks are equal, then: 
 	// returns 0
 		public int compareTo(PokerHand other) {
-		return -1;
+			if (getHandTypeValue() < other.getHandTypeValue()) {
+				return -1;	
+			} else if (getHandTypeValue() > other.getHandTypeValue()) {
+				return 1;
+			} else if (getHandTypeValue() == other.getHandTypeValue()) {
+				if (getHandRank() < other.getHandRank()) {
+					return -1;
+				} else if (getHandRank() > other.getHandRank()) {
+					return 1;
+				} 
+			}
+			// occurs if ranks and values are the same
+			return 0;
 		}
 	
-	// returns pair?
-		//private int find_pair_starting_at(int index) {
-		//return 3;
-		//}
+
 	
 }
