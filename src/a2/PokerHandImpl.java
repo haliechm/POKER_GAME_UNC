@@ -4,6 +4,25 @@ public class PokerHandImpl implements PokerHand {
 	Card[] hand;
 	
 public PokerHandImpl(Card[] cards) {
+	
+	// test to see if array is null
+	if (cards == null) {
+		throw new RuntimeException("Array is null");
+	}
+	
+	// test to see if array length = 5
+	if (cards.length != 5) {
+		throw new RuntimeException("Five cards were not passed out");
+	}
+	
+	// test to see if array is full of null elements
+	for (int i = 0; i < cards.length; i++) {
+		if (cards[i] == null) {
+			throw new RuntimeException("Card in array is null");
+		}
+		
+	}
+	
 	Card [] handClone = cards.clone();
 	hand = new Card[cards.length];
 	for (int i = 0; i < cards.length; i++) {
@@ -211,6 +230,7 @@ public PokerHandImpl(Card[] cards) {
 	}
 	
 	// RETURNS TRUE IF ALL CARDS ARE THE SAME SUIT (FLUSH)
+	// need to make sure all cards are valid?
 	int theIsFlushRank = 0;
 	public boolean isFlush() {
 			boolean isFlush = false; 
@@ -386,14 +406,10 @@ public PokerHandImpl(Card[] cards) {
 			handRank = hand[4].getRank();
 			return handRank;
 		}
-	
-	// returns -1 if hand value is smaller than hand passed in as other
-	// returns 1 if hand value is larger than hand passed in as other
-	// if hand values are equal, then: 
-	// returns -1 if hand rank is smaller than hand passed in as other 
-	// returns 1 if hand rank is larger than hand passed in as other
-	// if hand values and hand ranks are equal, then: 
-	// returns 0
+		
+		
+		// COMPARES VALUE AND RANK OF TWO CARDS AND 
+		// RETURNS AND INTEGER TO COMPARE THEM
 		public int compareTo(PokerHand other) {
 			if (getHandTypeValue() < other.getHandTypeValue()) {
 				return -1;	
