@@ -57,15 +57,19 @@ public PokerHandImpl(Card[] cards) {
 	// RETURNS TRUE IF HAND IS A STRAIGHT (including ace-5)
 	public boolean isStraight() {
 		boolean isStraight = false;
-			
-			if (hand[hand.length - 1].getRank() == 14 && hand[0].getRank() == 2 && hand[1].getRank() == 3 && hand[2].getRank() == 4 && hand[3].getRank() == 5) {
+		if (hand[hand.length - 1].getRank() == 14 
+				&& hand[0].getRank() == 2 
+				&& hand[1].getRank() == 3 
+				&& hand[2].getRank() == 4 
+				&& hand[3].getRank() == 5) {
 				isStraight = true;
 				return isStraight;
 			
 		}
 		for (int i = 0; i < hand.length; i++) {
 			
-				if (i + 1 == hand.length || hand[i].getRank() == (hand[i + 1].getRank() - 1)) {
+				if (i + 1 == hand.length || 
+					hand[i].getRank() == (hand[i + 1].getRank() - 1)) {
 					isStraight = true;
 					
 				} else {
@@ -77,7 +81,7 @@ public PokerHandImpl(Card[] cards) {
 		return isStraight;
 	}
 	
-	// RETURNS TRUE IF ALL CARDS ARE THE SAME SUIT	
+	// RETURNS TRUE IF ALL CARDS ARE THE SAME SUIT (FLUSH)
 	public boolean isFlush() {
 			boolean isFlush = false; 
 			Card.Suit wantSuit = hand[0].getSuit();
@@ -97,14 +101,26 @@ public PokerHandImpl(Card[] cards) {
 		return true;
 		}
 	
-	// returns true if the hand is a four of a kind
+	// RETURNS TRUE IF THE HAND IS CONTAINS FOUR OF A KIND
+		boolean isFourOfAKind = false;
 		public boolean isFourOfAKind() {
-		return true;
+			if (hand[0].getRank() == hand[1].getRank() 
+				&& hand[0].getRank() == hand[2].getRank() 
+				&& hand[0].getRank() == hand[3].getRank()) {
+				isFourOfAKind = true;
+				return isFourOfAKind;
+			} else if (hand[1].getRank() == hand[2].getRank() 
+					&& hand[1].getRank() == hand[3].getRank() 
+					&& hand[1].getRank() == hand[4].getRank()) {
+					isFourOfAKind = true;
+					return isFourOfAKind;
+			}
+			return isFourOfAKind;
 		}
-	
-	// returns true if the hand is a straight flush (both straight and flush)
+
+	// RETURNS TRUE IF THE HAND IS A STRAIGHT FLUSH
 		public boolean isStraightFlush() {
-			if (hand.isStraight()) {
+			if (isStraight() && isFlush()) {
 				return true;
 			} else {
 				return false;
