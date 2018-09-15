@@ -1,43 +1,31 @@
 package a2;
 
 // ONLY getCards, contains(c), AND isStraight() IS FINISHED
-// RETURNS ORDERED BY RANK ARRAY OF CARDS 
-// NO CLONE? IS THAT FINE
 public class PokerHandImpl implements PokerHand {
 	
 	Card[] hand;
 	
-	
-	public PokerHandImpl(Card[] cards) {
-		this.hand = orderByRank(cards);
-		
+public PokerHandImpl(Card[] cards) {
+	Card [] handClone = cards.clone();
+	hand = new Card[cards.length];
+	for (int i = 0; i < cards.length; i++) {
+		for (int j = i + 1; j < hand.length; j++) {
+			if (cards[i].getRank() > cards[j].getRank()) {
+				Card tmp = cards[i];
+				cards[i] = cards[j];
+				cards[j] = tmp;
+			}
+		}
 	}
-	
-	// DONE
-	// returns an array of the five cards in the hand
+	hand = cards;
+}
+		
+	// RETURNS AN ARRAY OF THE FIVE CARDS IN THE HAND (use to make an array of the cards passed in)
 	public Card[] getCards() {
 		return hand;
 	}
 	
-	// DONE
-	// returns an array of cards ordered by rank
-	public Card[] orderByRank(Card[] hand) {
-		for (int i = 0; i < hand.length; i++) {
-			for (int j = i + 1; j < hand.length; j++) {
-				if (hand[i].getRank() > hand[j].getRank()) {
-					Card tmp = hand[i];
-					hand[i] = hand[j];
-					hand[j] = tmp;
-				}
-			}
-		}
-		return hand;
-	}
-	
-	// DONE
-	// returns true if one of the cards in the hand
-	// matches in both rank and suit of the 
-	// card passed in as a parameter
+	// RETURNS TRUE IF OTHER CARD MATCHES ANY CARD IN HAND (in both suit and rank)
 	public boolean contains(Card c) {
 		
 		for (int i = 0; i < hand.length; i++) {
@@ -66,34 +54,42 @@ public class PokerHandImpl implements PokerHand {
 		return true;
 		}
 	
-	// DONE
-	// returns true if the hand is a straight (if it is a straight flush, should also return true for this)
-	
+	// RETURNS TRUE IF HAND IS A STRAIGHT (including ace-5)
 	public boolean isStraight() {
-		boolean issStraight = false;
+		boolean isStraight = false;
 			
 			if (hand[hand.length - 1].getRank() == 14 && hand[0].getRank() == 2 && hand[1].getRank() == 3 && hand[2].getRank() == 4 && hand[3].getRank() == 5) {
-				issStraight = true;
-				return issStraight;
+				isStraight = true;
+				return isStraight;
 			
 		}
 		for (int i = 0; i < hand.length; i++) {
 			
 				if (i + 1 == hand.length || hand[i].getRank() == (hand[i + 1].getRank() - 1)) {
-					issStraight = true;
+					isStraight = true;
 					
 				} else {
-					issStraight = false;
-					return issStraight;
+					isStraight = false;
+					return isStraight;
 				}
 			
 		}
-		return issStraight;
+		return isStraight;
 	}
 	
-	// returns true if the hand is a flush (if it is a straight flush, should also return true for this)
-		public boolean isFlush() {
-		return true;
+	// RETURNS TRUE IF ALL CARDS ARE THE SAME SUIT	
+	public boolean isFlush() {
+			boolean isFlush = false; 
+			Card.Suit wantSuit = hand[0].getSuit();
+			for (int i = 1; i < hand.length; i++) {
+				if (hand[i].getSuit() == wantSuit) {
+					isFlush = true;
+				} else {
+					isFlush = false; 
+					return isFlush;
+				}
+			}
+			return isFlush;
 		}
 	
 	// returns true if the hand is a full house
@@ -108,7 +104,11 @@ public class PokerHandImpl implements PokerHand {
 	
 	// returns true if the hand is a straight flush (both straight and flush)
 		public boolean isStraightFlush() {
-		return true;
+			if (hand.isStraight()) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	
 	// returns the hand value
