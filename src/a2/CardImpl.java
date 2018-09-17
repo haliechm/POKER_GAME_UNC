@@ -2,12 +2,13 @@ package a2;
 
 public class CardImpl implements Card {
 	
-	
-	
 	int rank;
 	Card.Suit suite;
 
 	public CardImpl(int rank, Card.Suit suite) {
+		if (rank < 2 || rank > 14) {
+			throw new RuntimeException("Rank is out of range");
+		}
 		this.rank = rank;
 		this.suite = suite;
 		
@@ -24,7 +25,6 @@ public class CardImpl implements Card {
 	}
 	
 	// returns Rank of Suit (rank is written at "Two" or "Five" + "of" + Suit in string form)
-	// suit is still in enumeration form 
 	public String toString() {
 		return (numToString(getRank()) + " of " + Card.suitToString(getSuit()));
 	}
@@ -34,6 +34,7 @@ public class CardImpl implements Card {
 		return ((getRank() == other.getRank()) && (getSuit() == other.getSuit()));
 	}
 	
+	// converts number to string of number
 	private String numToString(int numb) {
 		if (numb == 2) {
 			return "Two";
@@ -73,8 +74,9 @@ public class CardImpl implements Card {
 	// TRYING TO TEST
 	
 //	 public static void main(String[] args) {
-//		 CardImpl card = new CardImpl(JACK, Card.Suit.SPADES);
-//		 CardImpl card2 = new CardImpl(5, Card.Suit.SPADES);
+//		 CardImpl card0 = new CardImpl(1, Card.Suit.DIAMONDS);
+//		 CardImpl card = new CardImpl(QUEEN, Card.Suit.DIAMONDS);
+//		 CardImpl card2 = new CardImpl(QUEEN, Card.Suit.DIAMONDS);
 //		 System.out.println("Rank is: " + card.getRank());
 //		 System.out.println("Suit is: " + card.getSuit());
 //		 System.out.println("Card is: " + card.toString());
