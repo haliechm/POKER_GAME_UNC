@@ -6,7 +6,7 @@ public class PokerHandImpl implements PokerHand {
 public PokerHandImpl(Card[] cards) {
 	
 	// test to see if array is null
-	if (cards == null) {
+	if (cards == null || cards.length == 0) {
 		throw new RuntimeException("Array is null");
 	}
 	
@@ -15,7 +15,7 @@ public PokerHandImpl(Card[] cards) {
 		throw new RuntimeException("Five cards were not passed out");
 	}
 	
-	// test to see if array is full of null elements
+	// test to see if array is full of null cards
 	for (int i = 0; i < cards.length; i++) {
 		if (cards[i] == null) {
 			throw new RuntimeException("Card in array is null");
@@ -39,7 +39,7 @@ public PokerHandImpl(Card[] cards) {
 		
 	// RETURNS AN ARRAY OF THE FIVE CARDS IN THE HAND (use to make an array of the cards passed in)
 	public Card[] getCards() {
-		return hand;
+		return this.hand;
 	}
 	
 	// RETURNS TRUE IF OTHER CARD MATCHES ANY CARD IN HAND (in both suit and rank)
@@ -411,14 +411,14 @@ public PokerHandImpl(Card[] cards) {
 		// COMPARES VALUE AND RANK OF TWO CARDS AND 
 		// RETURNS AND INTEGER TO COMPARE THEM
 		public int compareTo(PokerHand other) {
-			if (getHandTypeValue() < other.getHandTypeValue()) {
+			if (this.getHandTypeValue() < other.getHandTypeValue()) {
 				return -1;	
-			} else if (getHandTypeValue() > other.getHandTypeValue()) {
+			} else if (this.getHandTypeValue() > other.getHandTypeValue()) {
 				return 1;
-			} else if (getHandTypeValue() == other.getHandTypeValue()) {
-				if (getHandRank() < other.getHandRank()) {
+			} else if (this.getHandTypeValue() == other.getHandTypeValue()) {
+				if (this.getHandRank() < other.getHandRank()) {
 					return -1;
-				} else if (getHandRank() > other.getHandRank()) {
+				} else if (this.getHandRank() > other.getHandRank()) {
 					return 1;
 				} 
 			}
