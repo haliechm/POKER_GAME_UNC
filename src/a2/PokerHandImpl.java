@@ -6,7 +6,7 @@ public class PokerHandImpl implements PokerHand {
 public PokerHandImpl(Card[] cards) {
 	
 	// test to see if array is null
-	if (cards == null || cards.length == 0) {
+	if (cards == null) {
 		throw new RuntimeException("Array is null");
 	}
 	
@@ -15,8 +15,9 @@ public PokerHandImpl(Card[] cards) {
 		throw new RuntimeException("Five cards were not passed out");
 	}
 	
+	// try 5 Had cards.length
 	// test to see if array is full of null cards
-	for (int i = 0; i < cards.length; i++) {
+	for (int i = 0; i < 5; i++) {
 		if (cards[i] == null) {
 			throw new RuntimeException("Card in array is null");
 		}
@@ -34,12 +35,12 @@ public PokerHandImpl(Card[] cards) {
 			}
 		}
 	}
-	hand = cards;
+	hand = cards.clone();
 }
 		
 	// RETURNS AN ARRAY OF THE FIVE CARDS IN THE HAND (use to make an array of the cards passed in)
 	public Card[] getCards() {
-		return this.hand;
+		return hand;
 	}
 	
 	// RETURNS TRUE IF OTHER CARD MATCHES ANY CARD IN HAND (in both suit and rank)
