@@ -175,7 +175,8 @@ public PokerHandImpl(Card[] cards) {
 					&& hand[3].getRank() != hand[4].getRank()
 					) {
 					isThreeOfAKind = true;
-					theThreeKindRank = hand[0].getRank();
+					//here too
+					theThreeKindRank = hand[2].getRank();
 					return isThreeOfAKind;
 				} else if (hand[2].getRank() == hand[3].getRank() 
 						&& hand[2].getRank() == hand[4].getRank()
@@ -193,7 +194,8 @@ public PokerHandImpl(Card[] cards) {
 						&& hand[0].getRank() != hand[4].getRank()
 						) {
 						isThreeOfAKind = true;
-						theThreeKindRank = hand[1].getRank();
+						// put 2 maybe third card is always the rank
+						theThreeKindRank = hand[2].getRank();
 						return isThreeOfAKind;
 				}
 				return isThreeOfAKind;
@@ -265,7 +267,8 @@ public PokerHandImpl(Card[] cards) {
 					&& hand[3].getRank() == hand[4].getRank()
 					) {
 				isFullHouse = true;
-				theIsFullHouseRank = hand[0].getRank();
+				// middle card will always be rank
+				theIsFullHouseRank = hand[2].getRank();
 				return isFullHouse;
 			}
 			// 2
@@ -276,6 +279,7 @@ public PokerHandImpl(Card[] cards) {
 					&& hand[0].getRank() == hand[1].getRank()
 					) {
 				isFullHouse = true;
+				// middle card will always be in triple cards
 				theIsFullHouseRank = hand[2].getRank();
 				return isFullHouse;
 			} 
@@ -293,7 +297,8 @@ public PokerHandImpl(Card[] cards) {
 				&& hand[0].getRank() != hand[4].getRank()
 				) {
 				isFourOfAKind = true;
-				theIsFourKindRank = hand[0].getRank();
+				//middle is always 
+				theIsFourKindRank = hand[2].getRank();
 				return isFourOfAKind;
 			} else if (hand[1].getRank() == hand[2].getRank() 
 					&& hand[1].getRank() == hand[3].getRank() 
@@ -301,7 +306,7 @@ public PokerHandImpl(Card[] cards) {
 					&& hand[1].getRank() != hand[0].getRank()
 					) {
 					isFourOfAKind = true;
-					theIsFourKindRank = hand[1].getRank();
+					theIsFourKindRank = hand[2].getRank();
 					return isFourOfAKind;
 			}
 			return isFourOfAKind;
@@ -312,7 +317,7 @@ public PokerHandImpl(Card[] cards) {
 		public boolean isStraightFlush() {
 			if (isStraight() && isFlush()) {
 				
-				if (hand[4].getRank() == 14) {
+				if (hand[4].getRank() == 14 && hand[0].getRank() == 2) {
 					theIsStraightFlushRank = 5;
 				} else {
 				theIsStraightFlushRank = hand[4].getRank();
