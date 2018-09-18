@@ -325,6 +325,10 @@ public PokerHandImpl(Card[] cards) {
 	// RETURNS THE HAND VALUE
 		public int getHandTypeValue() {
 		int handValue = 1;
+		if (isStraightFlush()) {
+			handValue = 9;
+			return handValue;
+		}
 		if (isOnePair()) {
 			handValue = 2;
 			return handValue;
@@ -353,10 +357,6 @@ public PokerHandImpl(Card[] cards) {
 			handValue = 8;
 			return handValue;
 		}
-		if (isStraightFlush()) {
-			handValue = 9;
-			return handValue;
-		}
 		
 		// only happens if hand is not any of the above types
 		return handValue;
@@ -367,6 +367,10 @@ public PokerHandImpl(Card[] cards) {
 		public int getHandRank() {
 			int handRank = 0;
 			
+			if (isStraightFlush()) {
+				handRank = theIsStraightFlushRank;
+				return handRank;
+			}
 			if (isOnePair()) {
 				handRank = theOnePairRank;
 				return handRank;
@@ -402,10 +406,6 @@ public PokerHandImpl(Card[] cards) {
 				return handRank;
 			}
 			
-			if (isStraightFlush()) {
-				handRank = theIsStraightFlushRank;
-				return handRank;
-			}
 			
 			// only happens if hand is not any of the above types
 			handRank = hand[4].getRank();
