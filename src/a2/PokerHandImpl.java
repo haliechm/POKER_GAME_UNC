@@ -2,6 +2,7 @@ package a2;
 public class PokerHandImpl implements PokerHand {
 	
 	Card[] hand;
+
 	
 public PokerHandImpl(Card[] cards) {
 	
@@ -25,17 +26,20 @@ public PokerHandImpl(Card[] cards) {
 	
 	//Card [] handClone = cards.clone();
 	// hand = new Card[cards.length];
-	for (int i = 0; i < cards.length; i++) {
+	hand = cards.clone();
+	
+	for (int i = 0; i < hand.length; i++) {
 		for (int j = i + 1; j < hand.length; j++) {
 			if (cards[i].getRank() > cards[j].getRank()) {
-				Card tmp = cards[i];
-				cards[i] = cards[j];
-				cards[j] = tmp;
+				Card tmp = hand[i];
+				hand[i] = hand[j];
+				hand[j] = tmp;
 			}
 		}
 	}
-	hand = cards.clone();
+	//hand = cards.clone();
 }
+
 		
 	// RETURNS AN ARRAY OF THE FIVE CARDS IN THE HAND (use to make an array of the cards passed in)
 	public Card[] getCards() {
