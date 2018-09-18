@@ -24,13 +24,14 @@ public PokerHandImpl(Card[] cards) {
 		
 	}
 	
+	// changed all of this to try to fix getCard()
 	//Card [] handClone = cards.clone();
 	// hand = new Card[cards.length];
 	hand = cards.clone();
 	
-	for (int i = 0; i < hand.length; i++) {
-		for (int j = i + 1; j < hand.length; j++) {
-			if (cards[i].getRank() > cards[j].getRank()) {
+	for (int i = 0; i < 5; i++) {
+		for (int j = i + 1; j < 5; j++) {
+			if (hand[i].getRank() > hand[j].getRank()) {
 				Card tmp = hand[i];
 				hand[i] = hand[j];
 				hand[j] = tmp;
