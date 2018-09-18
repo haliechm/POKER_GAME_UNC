@@ -24,8 +24,8 @@ public PokerHandImpl(Card[] cards) {
 		
 	}
 	
-	Card [] handClone = cards.clone();
-	hand = new Card[cards.length];
+	//Card [] handClone = cards.clone();
+	// hand = new Card[cards.length];
 	for (int i = 0; i < cards.length; i++) {
 		for (int j = i + 1; j < hand.length; j++) {
 			if (cards[i].getRank() > cards[j].getRank()) {
