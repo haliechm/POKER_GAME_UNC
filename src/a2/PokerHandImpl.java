@@ -166,6 +166,7 @@ public PokerHandImpl(Card[] cards) {
 	// RETURNS TRUE IS THREE OF A KIND (three of same rank, and other two are different)
 		boolean isThreeOfAKind = false;
 		int theThreeKindRank = 0; 
+		// theThreeKindRank will always by hand[2].getRank() b/c third card must be part of the triple
 		
 		public boolean isThreeOfAKind() {
 			if (hand[0].getRank() == hand[1].getRank() 
@@ -175,7 +176,6 @@ public PokerHandImpl(Card[] cards) {
 					&& hand[3].getRank() != hand[4].getRank()
 					) {
 					isThreeOfAKind = true;
-					//here too
 					theThreeKindRank = hand[2].getRank();
 					return isThreeOfAKind;
 				} else if (hand[2].getRank() == hand[3].getRank() 
@@ -194,7 +194,6 @@ public PokerHandImpl(Card[] cards) {
 						&& hand[0].getRank() != hand[4].getRank()
 						) {
 						isThreeOfAKind = true;
-						// put 2 maybe third card is always the rank
 						theThreeKindRank = hand[2].getRank();
 						return isThreeOfAKind;
 				}
@@ -205,16 +204,21 @@ public PokerHandImpl(Card[] cards) {
 	int theIsStraightRank = 0;
 	public boolean isStraight() {
 		boolean isStraight = false;
-		if (hand[hand.length - 1].getRank() == 14 
+		// CHANGED THIS FROM HAND[HAND[HAND.LENGTH-1] TO HAND[4]
+		
+		// CASE IF THE LAST CARD IS ACE AND OTHERS ARE 2, 3, 4, 5
+		if (hand[4].getRank() == 14 
 				&& hand[0].getRank() == 2 
 				&& hand[1].getRank() == 3 
 				&& hand[2].getRank() == 4 
 				&& hand[3].getRank() == 5) {
 				isStraight = true;
-				//theIsStraightRank = 5;
+				theIsStraightRank = 5;
 				return isStraight;
 			
 		}
+		
+		// NORMALS CHECK FOR ISSTRAIGHT()
 		for (int i = 0; i < hand.length; i++) {
 			
 				if (i + 1 == hand.length || 
@@ -228,7 +232,6 @@ public PokerHandImpl(Card[] cards) {
 				}
 			
 		}
-		// changed this
 		if (hand[4].getRank() == 14 && hand[0].getRank() == 2) {
 			theIsStraightRank = 5;
 		} else {
@@ -257,6 +260,7 @@ public PokerHandImpl(Card[] cards) {
 	
 	// RETURNS TRUE IF THE HAND IS A FULL HOUSE (3 same rank, 2 diff same rank)
 	int theIsFullHouseRank = 0;
+	// theIsFullHouseRank is always hand[2].getRank() here b/c second card must be card in triple
 	public boolean isFullHouse() {
 			boolean isFullHouse = false;
 			// 1 
@@ -290,6 +294,7 @@ public PokerHandImpl(Card[] cards) {
 	// RETURNS TRUE IF THE HAND IS FOUR OF A KIND (four of same rank)
 		boolean isFourOfAKind = false;
 		int theIsFourKindRank = 0;
+		// theIsFourKindRank is always hand[2].getRank() here b/c third card must be in set of 4
 		public boolean isFourOfAKind() {
 			if (hand[0].getRank() == hand[1].getRank() 
 				&& hand[0].getRank() == hand[2].getRank() 
@@ -440,3 +445,4 @@ public PokerHandImpl(Card[] cards) {
 
 	
 }
+
