@@ -1,0 +1,143 @@
+Grading script log:
+
+Looking for package: a2
+Found a2 directory: ./src/a2
+cwd: /var/www/grade1/comp401fall18/gradebooks/a2-haliechm/387aa4bfe00f6bca8b7555dbef97457c7a6d8342/src/a2
+Cmd: /usr/bin/javac -d /var/www/grade1/comp401fall18/gradebooks/a2-haliechm/387aa4bfe00f6bca8b7555dbef97457c7a6d8342/bin -cp /var/www/grade1/comp401fall18/gradebooks/a2-haliechm/387aa4bfe00f6bca8b7555dbef97457c7a6d8342/bin:/var/www/grade1/comp401fall18/junit/* *.java
+...successful.
+--------------------------------------------------
+Testing A2 Novice
+
+Running a2test.A2NoviceGrader
+Testing CardImpl by trying to make and confirm each card of a standard deck.
+... successful +1.0
+Testing equals() method of CardImpl
+... successful +0.5
+Testing whether CardImpl constructor appropriately throws runtime exception if rank provided is out of range.
+... successful +0.5
+Score: 2.00
+
+--------------------------------------------------
+Testing A2 Adept
+
+Running a2test.A2AdeptGrader
+Test PokerHandImpl constructor. Should throw throw runtime exception for null card array or null cards in array passed in to constructor. Also tests to see if card array is appropriately cloned.
+... successful +0.5
+Test PokerHandImpl compareTo method.
+... successful +0.5
+Test PokerHandImpl contains method.
+... successful +1.0
+Test PokerHandImpl getCards method.
+... successful +1.0
+Test PokerHandImpl getHandRank method.
+... failed.
+Test PokerHandImpl getHandTypeValue method.
+... successful +1.0
+Test PokerHandImpl isOnePair, isTwoPair, etc. methods
+... successful +1.0
+Score: 5.00
+
+--------------------------------------------------
+A2 Jedi Test 1
+
+Running a2.HandEvaluator
+Input: 
+9 5 S 5 H 10 D 14 C 3 H
+9 5 S 6 S 7 S 8 S 9 S
+1 5 S 5 H 10 D 14 C 3 H
+1 14 H 14 D 2 C 8 H 10 H
+9 14 H 14 D 2 C 8 H 10 H
+0
+
+
+Output:
+60
+80
+79
+80
+84
+0
+
+
+Output did not match expectations.
+Expected output:
+1
+100
+60
+91
+46
+
+A2 Jedi test 1 fails.
+--------------------------------------------------
+A2 Jedi Test 2
+
+Running a2.HandEvaluator
+Input: 
+1 5 H 5 D 14 S 14 D 10 C
+2 5 H 5 D 14 S 14 D 10 C
+3 5 H 5 D 14 S 14 D 10 C
+4 5 H 5 D 14 S 14 D 10 C
+5 5 H 5 D 14 S 14 D 10 C
+6 5 H 5 D 14 S 14 D 10 C
+7 5 H 5 D 14 S 14 D 10 C
+8 5 H 5 D 14 S 14 D 10 C
+9 5 H 5 D 14 S 14 D 10 C
+1 9 C 9 S 3 H 13 D 11 D
+2 9 C 9 S 3 H 13 D 11 D
+3 9 C 9 S 3 H 13 D 11 D
+4 9 C 9 S 3 H 13 D 11 D
+5 9 C 9 S 3 H 13 D 11 D
+6 9 C 9 S 3 H 13 D 11 D
+7 9 C 9 S 3 H 13 D 11 D
+8 9 C 9 S 3 H 13 D 11 D
+9 9 C 9 S 3 H 13 D 11 D
+0
+
+
+Output:
+97
+97
+97
+97
+97
+97
+97
+97
+97
+97
+96
+95
+93
+92
+90
+89
+88
+87
+0
+
+
+Output did not match expectations.
+Expected output:
+97
+94
+91
+88
+85
+82
+80
+78
+75
+75
+56
+43
+32
+24
+18
+13
+9
+7
+
+A2 Jedi test 1 fails.
+============================
+
+Total Score: 7.0
