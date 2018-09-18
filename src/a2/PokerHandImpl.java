@@ -226,7 +226,8 @@ public PokerHandImpl(Card[] cards) {
 				}
 			
 		}
-		if (hand[4].getRank() == 14) {
+		// changed this
+		if (hand[4].getRank() == 14 && hand[1].getRank() == 2) {
 			theIsStraightRank = 5;
 		} else {
 		theIsStraightRank = hand[4].getRank();
