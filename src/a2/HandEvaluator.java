@@ -8,10 +8,10 @@ public class HandEvaluator {
 		Scanner s = new Scanner(System.in);
 		double winCount = 0;
 		double lossCount = 0;
-		double tieCount = 0;
+		//double tieCount = 0;
 		boolean betterThanHand = false;
 		boolean lostHandAtLeastOnce = false;
-		boolean equalToHand = false;
+		//boolean equalToHand = false;
 		
 		// while input is being put in
 	while (s.hasNext()) {
@@ -61,11 +61,15 @@ public class HandEvaluator {
 		
 		PokerHand hand = new PokerHandImpl(handArray);
 		
-			
+		lossCount = 0; 
+		winCount = 0;
 		for (int i = 0; i < 10000; i++) {
+			lostHandAtLeastOnce = false;
+			betterThanHand = false;
 			
 			// create deck
 			DeckImpl ShuffledDeck = new DeckImpl();
+			
 			
 			// remove five cards
 			ShuffledDeck.findAndRemove(card1);
@@ -82,6 +86,8 @@ public class HandEvaluator {
 					
 					PokerHand opponentHand = ShuffledDeck.dealHand();
 					
+					// need to get rid of opponent's cards here?
+					
 				
 					if (hand.compareTo(opponentHand) == 1) {
 						betterThanHand = true;
@@ -89,19 +95,20 @@ public class HandEvaluator {
 					} else if (hand.compareTo(opponentHand) == -1) {
 						lostHandAtLeastOnce = true;
 
-					} else if (hand.compareTo(opponentHand) == 0) {
-						equalToHand = true;
+					// never going to be equal to each other?
+					//} else if (hand.compareTo(opponentHand) == 0) {
+						//equalToHand = true;
 						
 				}	
 			}
 			
-			// need to count ties here somehow too
+			// counting wins & losses
 			if (lostHandAtLeastOnce) {
 				lossCount++;
 			} else if (betterThanHand) {
 				winCount++;
-			} else if (equalToHand) {
-				tieCount++;
+			//} else if (equalToHand) {
+				//tieCount++;
 			}
 			
 
@@ -110,7 +117,7 @@ public class HandEvaluator {
 	
 	
 		
-		double percentage_as_double = 100.0 * ((winCount * 1.0)/(winCount + lossCount + tieCount));
+		double percentage_as_double = 100.0 * ((winCount * 1.0)/(winCount + lossCount));
 		int percentage_as_an_int = (int)(percentage_as_double + 0.5);
 		System.out.println(percentage_as_an_int);
 		
