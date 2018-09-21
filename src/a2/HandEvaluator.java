@@ -5,7 +5,7 @@ public class HandEvaluator {
 
 	public static void main(String[] args) {
 		
-		// 1
+		// 2
 		Scanner s = new Scanner(System.in);
 		double winCount = 0;
 		double lossCount = 0;
